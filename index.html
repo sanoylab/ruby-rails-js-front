@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog Post</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h2>Blog</h2>
+        <ul class="nav-links">
+           
+            <li><a href="#">Creat new Post</a></li>
+           
+        </ul>
+    </header>
+    <main>
+        <ul id="articles">
+
+        </ul>
+    </main>
+
+    <template id="template">
+        <li>
+            <div class="thumb"></div>
+            <span></span>
+        </li>
+    </template>
+
+    <script>
+    let api = async ()=>{
+        let response = await fetch('https://blog-yonas.herokuapp.com/api/v1/articles');
+        return response.json();
+    }
+    let articles = document.getElementById('articles');
+    api().then(
+        (res)=>{
+            res.data.forEach(
+                (item)=>{
+                    console.log(item.title);
+                const template = document.getElementById('template');
+                const clone = document.importNode(template.content, true);
+               // clone.querySelector('span').innerHTML = `<h2>${item.title}</h2`;
+                clone.querySelector('.thumb').innerHTML = `<img src="${item.thumb}"  >`;
+                articles.appendChild(clone);
+
+
+                }
+            );
+
+        }
+    ).catch();
+    </script>
+</body>
+</html>
