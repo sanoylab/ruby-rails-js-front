@@ -55,6 +55,9 @@ main h1{
     list-style: none;
     justify-content: space-around;
 }
+#articles li{
+    margin-bottom: 20px;
+}
 #articles h2{
     word-wrap: break-word;
     max-width: 20vw;
