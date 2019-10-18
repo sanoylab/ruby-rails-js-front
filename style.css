@@ -19,15 +19,13 @@ header{
     flex-basis: 15%;
     list-style: none;
 }
-.nav-links li{
-    padding: 5px;
-}
+
 .nav-links a{
     text-transform: uppercase;
     color: #f1f1f1;
     text-decoration: none;
     background: #169fe4;
-    
+     padding: 12px;
     border-radius: 5px;
 }
 .nav-links a:hover{
