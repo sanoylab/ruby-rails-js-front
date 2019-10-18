@@ -45,7 +45,7 @@
                 const template = document.getElementById('template');
                 const clone = document.importNode(template.content, true);
                 clone.querySelector('span').innerHTML = `<h2><a href="/post/${item.id}">${item.title}</a></h2>`;
-                clone.querySelector('.thumb').innerHTML = `<img src="${item.thumb}"  >`;
+                clone.querySelector('.thumb').innerHTML = `<a href="/post/${item.id}"><img src="${item.thumb}"  ></a>`;
                 articles.appendChild(clone);
 
 
