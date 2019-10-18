@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h2>Blog</h2>
+        <h1>Blog</h1>
         <ul class="nav-links">
            
             <li><a href="#">Creat new Post</a></li>
@@ -44,7 +44,7 @@
                     console.log(item.title);
                 const template = document.getElementById('template');
                 const clone = document.importNode(template.content, true);
-               // clone.querySelector('span').innerHTML = `<h2>${item.title}</h2`;
+                clone.querySelector('span').innerHTML = `<h2>${item.title}</h2`;
                 clone.querySelector('.thumb').innerHTML = `<img src="${item.thumb}"  >`;
                 articles.appendChild(clone);
 

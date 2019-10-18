@@ -41,6 +41,12 @@ main{
     list-style: none;
     justify-content: space-around;
 }
+#articles h2{
+    word-wrap: break-word;
+    max-width: 20vw;
+    padding-left: 30px;
+
+}
 #articles img {
     margin: 30px;
     border: 3px solid #000;
