@@ -36,9 +36,10 @@ header{
 }
 
 main{
-    max-width: 100%;
+    max-width: 80%;
     margin: 0 auto;
     margin: 100px;
+    padding-top: 100px;
 }
 main h1{
     font-size: 40px;
@@ -84,8 +85,8 @@ main h1{
  }
 #articles img {
     
-    border-radius: 2px;
-    max-width: 26vw;
+    border-radius: 5px;
+    max-width: 25vw;
   }
   #articles img:hover {
     opacity: 0.5;
