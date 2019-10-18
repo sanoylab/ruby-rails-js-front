@@ -61,8 +61,11 @@ main h1{
 }
 .text{
     padding: 20px 30px;
+    color: #000;
 }
-
+.text a {
+    color: #418FDE;
+}
 #articles h2 a{
    text-decoration: none;
     color: #418FDE
@@ -75,8 +78,7 @@ main h1{
  }
 #articles img {
     margin: 30px;
-  border-radius: 2px;
-
+    border-radius: 2px;
     max-width: 24vw;
   }
   #articles img:hover {
