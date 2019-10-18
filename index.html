@@ -46,7 +46,7 @@
                 const template = document.getElementById('template');
                 const clone = document.importNode(template.content, true);
                 clone.querySelector('span').innerHTML = `<h2><a href="/post/${item.id}">${item.title}</a></h2>
-                <p class="text"><i class="fas fa-at"></i><a href="#">${item.author.toLowerCase().split(' ').join('-')}</a> <i class="far fa-clock"></i> ${new Date(item.updated_at).toLocaleDateString()}</p>`;
+                <p class="text"><a href="#"><i class="fas fa-at"></i>${item.author.toLowerCase().split(' ').join('-')}</a> <i class="far fa-clock"></i> ${new Date(item.updated_at).toLocaleDateString()}</p>`;
                 clone.querySelector('.thumb').innerHTML = `<a href="/post/${item.id}"><img src="${item.thumb}"  ></a>`;
                 articles.appendChild(clone);
                 }
