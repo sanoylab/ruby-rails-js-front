@@ -20,26 +20,57 @@
             <main>
                     <h1>New Post</h1>
                     <div class="container">
-                            <form>
+                           <div id="message"></div><br>
                           
-                              <label for="fname">Title</label>
-                              <input type="text" id="title" name="firstname" placeholder="Article title..">
+                              <label for="title">Title</label>
+                              <input type="text" id="title" name="title" required placeholder="Article title..">
                           
-                              <label for="lname">Thumbnail Image URL</label>
-                              <input type="text" id="thumbnail" name="lastname" placeholder="Thumbnail image url..">                             
+                              <label for="thumbnail">Thumbnail Image URL</label>
+                              <input type="text" id="thumbnail" name="thumbnail" required placeholder="Thumbnail image url..">                             
                           
-                              <label for="subject">Body</label>
-                              <textarea id="subject" name="body" placeholder="Write body of the article.." style="height:300px"></textarea>
+                              <label for="body">Body</label>
+                              <textarea id="body" name="body" placeholder="Write body of the article.." required style="height:300px"></textarea>
 
-                              <input type="submit" value="Submit">
+                              <input type="submit" id="submit" value="Submit">
                           
-                            </form>
+                          
                           </div>
             </main>
 
             
             <script>
             
+
+            submit.addEventListener('click', ()=>{
+              let title = document.getElementById('title').value;
+              let thumbnail = document.getElementById('thumbnail').value;
+              let body = document.getElementById('body').value;
+
+              fetch('https://blog-yonas.herokuapp.com/api/v1/articles',{
+                method: 'POST',
+                headers:{
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                  {
+                    "title": title,
+                    "thumb": thumbnail,
+                    "body": body,
+                    "author": 'Yonas Yeneneh'
+                   
+                  }
+                )
+              }).then(resp => resp.json()).then(
+                document.getElementById("message").innerHTML = "<div style='background: #02e066; padding: 12px; text-align: center; width: 350px; color: white;'>Article posted successfully</div>"
+              )
+
+
+              console.log(title);
+              console.log(thumbnail);
+              console.log(body)
+            });
+
+
             </script>
 
 </body>
