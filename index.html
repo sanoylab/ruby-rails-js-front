@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,21 @@
     <title>Blog Post</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-   </head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
 <body>
     <header>
         <h1 class="logo"><a href="index.html">Blog</a></h1>
         <ul class="nav-links">
-           
+
             <li><a href="create.html">Creat new Post</a></li>
-           
+
         </ul>
     </header>
     <main style="margin: 0 auto;">
+        <div id="spinner"></div>
         <h1>Latest Articles</h1>
         <ul id="articles">
 
@@ -32,29 +36,46 @@
         </li>
     </template>
 
-  
+    <script>
+            const spinner = document.getElementById("spinner");
+    
+            function showSpinner() {
+                spinner.className = "show";
+                setTimeout(() => {
+                    spinner.className = spinner.className.replace("show", "");
+                }, 5000);
+            }
+        </script>
 
     <script>
-    let api = async ()=>{
-        let response = await fetch('https://blog-yonas.herokuapp.com/api/v1/articles');
-        return response.json();
-    }
-    let articles = document.getElementById('articles');
-    api().then(
-        (res)=>{
-            res.data.forEach(
-                (item)=>{
-                    console.log(item.title);
-                const template = document.getElementById('template');
-                const clone = document.importNode(template.content, true);
-                clone.querySelector('span').innerHTML = `<h2><a href="/post/${item.id}">${item.title}</a></h2>
-                <p class="text"><a href="#"><i class="fas fa-at"></i>${item.author.toLowerCase().split(' ').join('-')}</a> <i class="far fa-clock"></i> ${new Date(item.updated_at).toLocaleDateString()}</p>`;
-                clone.querySelector('.thumb').innerHTML = `<a href="/post/${item.id}"><img src="${item.thumb}"  ></a>`;
-                articles.appendChild(clone);
-                }
-            );
+        showSpinner();
+        let api = async () => {
+            let response = await fetch('https://blog-yonas.herokuapp.com/api/v1/articles');
+            
+            return response.json();
         }
-    ).catch();
+        let articles = document.getElementById('articles');
+        
+        api().then(
+            (res) => {
+                res.data.forEach(
+                    (item) => {
+                        console.log(item.title);
+                        const template = document.getElementById('template');
+                        const clone = document.importNode(template.content, true);
+                        clone.querySelector('span').innerHTML =
+                            `<h2><a href="/post/${item.id}">${item.title}</a></h2>
+                <p class="text"><a href="#"><i class="fas fa-at"></i>${item.author.toLowerCase().split(' ').join('-')}</a> <i class="far fa-clock"></i> ${new Date(item.updated_at).toLocaleDateString()}</p>`;
+                        clone.querySelector('.thumb').innerHTML =
+                            `<a href="/post/${item.id}"><img src="${item.thumb}"  ></a>`;
+                        articles.appendChild(clone);
+                    }
+                );
+            }
+        ).catch();
     </script>
+
+    
 </body>
+
 </html>
