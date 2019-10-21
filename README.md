@@ -4,7 +4,7 @@ This app consumes rest api endpoint developed by ruby on rails. It's is a simple
 
 - The front end in https://sanoylab.github.io/ruby-rails-js-front/index.html
 - The back end ruby on rail application is found inn https://github.com/sanoylab/ruby-rails-api
-
+- API https://blog-yonas.herokuapp.com/api/v1/articles
 
 # Files
 
