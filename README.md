@@ -8,8 +8,8 @@ This app consumes rest api endpoint developed by ruby on rails. It's is a simple
 
 # Files
 
-- Index.html
-- Create.html
+- index.html
+- create.html
 - sytle.css
 
 
